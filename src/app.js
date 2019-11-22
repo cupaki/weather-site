@@ -8,6 +8,7 @@ console.log(__dirname)
 console.log(path.join(__dirname, '../public'))
 
 const app = express()
+const port = process.env.PORT || 3000
 
 //define paths for express config
 const publicDirPath = path.join(__dirname, '../public')
@@ -26,14 +27,14 @@ app.use(express.static(publicDirPath))
 app.get('', (req, res) => {
     res.render('index', {
         title: 'Weather App',
-        name: 'Andrew Mead index'
+        name: 'Cupaki'
     })
 })
 
 app.get('/about', (req, res) => {
     res.render('about', {
         title: 'About me',
-        name: 'Andrew Mead about'
+        name: 'Cupaki about'
     })
 })
 
@@ -41,7 +42,7 @@ app.get('/help', (req, res) => {
     res.render('help', {
         helpText: 'This is a helpful text',
         title: 'Help',
-        name: 'Andrew Mead'
+        name: 'Cupaki Mead'
     })
 })
 
@@ -92,7 +93,7 @@ app.get('/help*', (req, res) => {
     res.render('404', {
         title: '404',
         message: 'Help page not found',
-        name: 'Andrew Mead'
+        name: 'Cupaki'
     })
 })
 
@@ -100,11 +101,11 @@ app.get('*', (req, res) => { //zvezda mora poslednji get za stranicu
     res.render('404', {
         title: '404',
         message: 'Page not found',
-        name: 'Andrew Mead'
+        name: 'Cupaki'
     })
 })
 
 
-app.listen(3000, () => {
-    console.log('Server is up on port 3000.')
+app.listen(port, () => {
+    console.log('Server is up on port ' + port)
 })
